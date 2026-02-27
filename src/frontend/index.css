@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* === MediCare HIS — Clinical Navy Design System === */
+    /* Background: crisp clinical white */
+    --background: 0.98 0.004 220;
+    --foreground: 0.18 0.04 240;
+
+    /* Cards: white with subtle blue tint */
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.04 240;
+
+    /* Popover */
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.04 240;
+
+    /* Primary: deep clinical navy */
+    --primary: 0.28 0.09 245;
+    --primary-foreground: 0.99 0 0;
+
+    /* Secondary: cool slate */
+    --secondary: 0.94 0.015 230;
+    --secondary-foreground: 0.28 0.09 245;
+
+    /* Muted: light gray-blue */
+    --muted: 0.94 0.012 220;
+    --muted-foreground: 0.52 0.04 230;
+
+    /* Accent: sky blue */
+    --accent: 0.91 0.04 230;
+    --accent-foreground: 0.22 0.08 245;
+
+    /* Status colors */
+    --destructive: 0.57 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+
+    --success: 0.55 0.17 155;
+    --success-foreground: 0.98 0 0;
+
+    --warning: 0.75 0.18 70;
+    --warning-foreground: 0.15 0 0;
+
+    /* Border & inputs */
+    --border: 0.88 0.018 230;
+    --input: 0.88 0.018 230;
+    --ring: 0.45 0.12 245;
+
+    /* Chart colors */
+    --chart-1: 0.45 0.18 245;
+    --chart-2: 0.55 0.17 155;
+    --chart-3: 0.58 0.2 290;
+    --chart-4: 0.72 0.18 55;
+    --chart-5: 0.5 0.21 20;
+
+    /* Sidebar */
+    --sidebar: 0.22 0.07 245;
+    --sidebar-foreground: 0.95 0.01 230;
+    --sidebar-primary: 0.62 0.19 230;
+    --sidebar-primary-foreground: 0.99 0 0;
+    --sidebar-accent: 0.3 0.09 245;
+    --sidebar-accent-foreground: 0.95 0.01 230;
+    --sidebar-border: 0.32 0.08 245;
+    --sidebar-ring: 0.62 0.19 230;
+
+    /* Custom HIS tokens */
+    --his-navy: 0.24 0.09 245;
+    --his-sky: 0.62 0.16 235;
+    --his-mint: 0.75 0.13 162;
+    --his-coral: 0.58 0.2 25;
+    --his-amber: 0.72 0.17 60;
+    --his-violet: 0.55 0.2 285;
+    --his-teal: 0.58 0.14 195;
+  }
+
+  .dark {
+    --background: 0.11 0.035 245;
+    --foreground: 0.94 0.015 230;
+
+    --card: 0.16 0.04 245;
+    --card-foreground: 0.94 0.015 230;
+
+    --popover: 0.18 0.04 245;
+    --popover-foreground: 0.94 0.015 230;
+
+    --primary: 0.62 0.19 230;
+    --primary-foreground: 0.11 0.035 245;
+
+    --secondary: 0.22 0.055 245;
+    --secondary-foreground: 0.94 0.015 230;
+
+    --muted: 0.22 0.055 245;
+    --muted-foreground: 0.62 0.05 230;
+
+    --accent: 0.26 0.065 245;
+    --accent-foreground: 0.94 0.015 230;
+
+    --destructive: 0.65 0.22 22;
+    --destructive-foreground: 0.11 0.035 245;
+
+    --border: 0.26 0.055 245;
+    --input: 0.26 0.055 245;
+    --ring: 0.62 0.19 230;
+
+    --chart-1: 0.62 0.19 230;
+    --chart-2: 0.65 0.18 155;
+    --chart-3: 0.72 0.18 70;
+    --chart-4: 0.65 0.22 290;
+    --chart-5: 0.65 0.22 22;
+
+    --sidebar: 0.14 0.04 245;
+    --sidebar-foreground: 0.94 0.015 230;
+    --sidebar-primary: 0.62 0.19 230;
+    --sidebar-primary-foreground: 0.11 0.035 245;
+    --sidebar-accent: 0.22 0.055 245;
+    --sidebar-accent-foreground: 0.94 0.015 230;
+    --sidebar-border: 0.24 0.055 245;
+    --sidebar-ring: 0.62 0.19 230;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Syne', sans-serif;
+  }
+
+  code, pre, .mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+}
+
+@layer components {
+  /* === Page entry animation === */
+  @keyframes page-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .page-enter {
+    animation: page-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* === Stagger children === */
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .stagger-child {
+    animation: fade-up 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .stagger-child:nth-child(1) { animation-delay: 0.05s; }
+  .stagger-child:nth-child(2) { animation-delay: 0.1s; }
+  .stagger-child:nth-child(3) { animation-delay: 0.15s; }
+  .stagger-child:nth-child(4) { animation-delay: 0.2s; }
+  .stagger-child:nth-child(5) { animation-delay: 0.25s; }
+  .stagger-child:nth-child(6) { animation-delay: 0.3s; }
+
+  /* === AI Panel slide === */
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-out-right {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
+
+  .ai-panel-enter {
+    animation: slide-in-right 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* === Dashboard icon card hover === */
+  .dash-card {
+    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s ease;
+  }
+
+  .dash-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 32px -8px oklch(0 0 0 / 0.18), 0 4px 12px -4px oklch(0 0 0 / 0.1);
+  }
+
+  /* === Status badges === */
+  .badge-admitted {
+    @apply bg-green-50 text-green-700 border border-green-200;
+  }
+
+  .badge-discharged {
+    @apply bg-gray-50 text-gray-600 border border-gray-200;
+  }
+
+  .badge-available {
+    @apply bg-green-50 text-green-700 border border-green-200;
+  }
+
+  .badge-occupied {
+    @apply bg-amber-50 text-amber-700 border border-amber-200;
+  }
+
+  .badge-maintenance {
+    @apply bg-red-50 text-red-700 border border-red-200;
+  }
+
+  /* === Clinical table === */
+  .clinical-table th {
+    @apply text-xs font-semibold tracking-wider uppercase text-muted-foreground bg-muted/50;
+  }
+
+  .clinical-table tr:hover td {
+    @apply bg-accent/40 cursor-pointer;
+  }
+
+  /* === Glass effect for modals === */
+  .glass {
+    backdrop-filter: blur(16px) saturate(1.8);
+    background: oklch(1 0 0 / 0.92);
+  }
+}
