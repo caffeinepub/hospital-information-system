@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { Loader2, Shield, Lock, AlertTriangle, LogOut } from "lucide-react";
+import { Loader2, Shield, Lock, AlertTriangle, LogOut, Users, HeartPulse } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useInternetIdentity } from "../hooks/useInternetIdentity";
 import { useCallerUserRole, UserRole } from "../hooks/useQueries";
@@ -165,6 +165,72 @@ export function LoginPage() {
                 </p>
               </>
             )}
+          </div>
+        </div>
+
+        {/* Preview Mode Role Selector */}
+        <div className="mt-4 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] shadow-xl backdrop-blur-xl">
+          <div className="px-6 py-5">
+            {/* Divider label */}
+            <div className="mb-4 flex items-center gap-3">
+              <div className="h-px flex-1 bg-white/10" />
+              <span className="text-xs font-medium tracking-widest text-white/30 uppercase">
+                Preview Mode
+              </span>
+              <div className="h-px flex-1 bg-white/10" />
+            </div>
+
+            <p className="mb-4 text-center text-xs text-white/40">
+              Explore each role's dashboard without authentication
+            </p>
+
+            {/* Role cards */}
+            <div className="grid grid-cols-3 gap-3">
+              {/* Admin */}
+              <button
+                type="button"
+                onClick={() => void navigate({ to: "/dashboard" })}
+                className="group flex flex-col items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-4 text-center transition-all duration-200 hover:border-sky-400/40 hover:bg-sky-400/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/50"
+              >
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-sky-400/15 ring-1 ring-sky-400/25 transition-all duration-200 group-hover:bg-sky-400/25 group-hover:ring-sky-400/40">
+                  <Shield className="h-4 w-4 text-sky-300" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold text-white/80 group-hover:text-white">Admin</p>
+                  <p className="mt-0.5 text-[10px] text-white/30">Full access</p>
+                </div>
+              </button>
+
+              {/* Staff */}
+              <button
+                type="button"
+                onClick={() => void navigate({ to: "/staff-dashboard" })}
+                className="group flex flex-col items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-4 text-center transition-all duration-200 hover:border-blue-400/40 hover:bg-blue-400/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/50"
+              >
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-400/15 ring-1 ring-blue-400/25 transition-all duration-200 group-hover:bg-blue-400/25 group-hover:ring-blue-400/40">
+                  <Users className="h-4 w-4 text-blue-300" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold text-white/80 group-hover:text-white">Staff</p>
+                  <p className="mt-0.5 text-[10px] text-white/30">Read-only</p>
+                </div>
+              </button>
+
+              {/* Patient */}
+              <button
+                type="button"
+                onClick={() => void navigate({ to: "/patient-dashboard" })}
+                className="group flex flex-col items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-4 text-center transition-all duration-200 hover:border-violet-400/40 hover:bg-violet-400/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/50"
+              >
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-violet-400/15 ring-1 ring-violet-400/25 transition-all duration-200 group-hover:bg-violet-400/25 group-hover:ring-violet-400/40">
+                  <HeartPulse className="h-4 w-4 text-violet-300" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold text-white/80 group-hover:text-white">Patient</p>
+                  <p className="mt-0.5 text-[10px] text-white/30">My portal</p>
+                </div>
+              </button>
+            </div>
           </div>
         </div>
 
